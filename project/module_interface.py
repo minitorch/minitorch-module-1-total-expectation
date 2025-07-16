@@ -4,8 +4,7 @@ from streamlit_ace import st_ace
 
 import minitorch
 
-MyModule = None
-minitorch
+MyModule = minitorch
 
 
 def render_module_sandbox():
@@ -17,7 +16,7 @@ def render_module_sandbox():
 
     code = st_ace(
         language="python",
-        height=300,
+        height=600,
         value="""
 class MyModule(minitorch.Module):
     def __init__(self):
