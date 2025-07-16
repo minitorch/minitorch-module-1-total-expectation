@@ -16,3 +16,13 @@ python sync_previous_module.py previous-module-dir current-module-dir
 The files that will be synced are:
 
         minitorch/operators.py minitorch/module.py tests/test_module.py tests/test_operators.py project/run_manual.py
+
+# Outputs
+![alt text](outputs/newplot(1).png)
+![alt text](outputs/newplot.png)
+![alt text](outputs/newplot(2).png)
+![alt text](outputs/newplot(3).png)
+![alt text](outputs/newplot(4).png)
+![alt text](outputs/newplot(5).png)
+![alt text](outputs/newplot(6).png)
+![alt text](outputs/newplot(7).png)

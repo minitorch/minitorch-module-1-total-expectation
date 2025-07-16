@@ -52,6 +52,7 @@ def test_central_diff() -> None:
 
 
 @given(small_floats, small_floats)
+@pytest.mark.task1_2
 def test_simple(a: float, b: float) -> None:
     # Simple add
     c = Scalar(a) + Scalar(b)
@@ -66,6 +67,42 @@ def test_simple(a: float, b: float) -> None:
     assert_close(c.data, minitorch.operators.relu(a) + minitorch.operators.relu(b))
 
     # Add others if you would like...
+
+    # Simple LT
+    c = Scalar(a) < Scalar(b)
+    assert_close(c.data, float(a < b))
+
+    # Simple GT
+    c = Scalar(a) > Scalar(b)
+    assert_close(c.data, float(a > b))
+
+    # Simple EQ
+    c = Scalar(a) == Scalar(b)
+    assert_close(c.data, float(a == b))
+
+    # Simple sub
+    c = Scalar(a) - Scalar(b)
+    assert_close(c.data, a - b)
+
+    # Simple neg
+    c = -Scalar(a)
+    assert_close(c.data, -a)
+
+    # Simple log
+    if a <= 0:
+        with pytest.raises(ValueError, match="math domain error"):
+            c = Scalar(a).log()
+    else:
+        c = Scalar(a).log()
+        assert_close(c.data, minitorch.operators.log(a))
+
+    # Simple exp
+    c = Scalar(a).exp()
+    assert_close(c.data, minitorch.operators.exp(a))
+
+    # Simple sigmoid
+    c = Scalar(a).sigmoid()
+    assert_close(c.data, minitorch.operators.sigmoid(a))
 
 
 one_arg, two_arg, _ = MathTestVariable._comp_testing()
